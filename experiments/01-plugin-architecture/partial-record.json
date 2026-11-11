@@ -1,7 +1,7 @@
 {
   "tool": "verdictroom",
   "status": "aborted",
-  "reason": "no debater produced a usable opening",
+  "reason": "provider failure: custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.6-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}",
   "transcript": [
     {
       "seq": 1,
@@ -58,42 +58,9 @@
       },
       "prev": "verdictroom-genesis",
       "hash": "ec4e36591a106a48a2221bc633da8c0ae209a0b8aa9c900b77d4d1a71c311eac"
-    },
-    {
-      "seq": 2,
-      "kind": "unavailable",
-      "payload": {
-        "role": "Baseline",
-        "phase": "baseline",
-        "reason": "no provider for this role is usable"
-      },
-      "prev": "ec4e36591a106a48a2221bc633da8c0ae209a0b8aa9c900b77d4d1a71c311eac",
-      "hash": "b35a3ab3adea4c4b3aec110bc2e05f51c7a10b55b908533694a17d6fa3d8ad34"
-    },
-    {
-      "seq": 3,
-      "kind": "unavailable",
-      "payload": {
-        "role": "Debater A",
-        "phase": "opening",
-        "reason": "no provider for this role is usable"
-      },
-      "prev": "b35a3ab3adea4c4b3aec110bc2e05f51c7a10b55b908533694a17d6fa3d8ad34",
-      "hash": "d8533b8c24948a2a811fc59ff968316b3b2ce768507d20f28b70e8e50b20bb69"
-    },
-    {
-      "seq": 4,
-      "kind": "unavailable",
-      "payload": {
-        "role": "Debater B",
-        "phase": "opening",
-        "reason": "no provider for this role is usable"
-      },
-      "prev": "d8533b8c24948a2a811fc59ff968316b3b2ce768507d20f28b70e8e50b20bb69",
-      "hash": "f1d8eb85cd66ed1bba427455db488f6d61480d6a1cc904da95f9db75b1157953"
     }
   ],
-  "chain_head": "f1d8eb85cd66ed1bba427455db488f6d61480d6a1cc904da95f9db75b1157953",
+  "chain_head": "ec4e36591a106a48a2221bc633da8c0ae209a0b8aa9c900b77d4d1a71c311eac",
   "ledger": [
     {
       "seq": 1,
@@ -108,14 +75,14 @@
       "cost_usd": 0.0,
       "latency_s": null,
       "status": "failed",
-      "note": "custom.google-ai-studio: transport failure (TimeoutError: The read operation timed out)"
+      "note": "custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}"
     },
     {
       "seq": 2,
-      "phase": "opening",
-      "role": "Debater A",
+      "phase": "baseline",
+      "role": "Baseline",
       "provider": "gemini",
-      "model_requested": "gemini-3.8-flash",
+      "model_requested": "gemini-3.6-flash",
       "model_served": null,
       "prompt_tokens": null,
       "completion_tokens": null,
@@ -123,26 +90,11 @@
       "cost_usd": 0.0,
       "latency_s": null,
       "status": "failed",
-      "note": "custom.google-ai-studio: transport failure (HTTPError: HTTP Error 503: Service Unavailable)"
-    },
-    {
-      "seq": 3,
-      "phase": "opening",
-      "role": "Debater B",
-      "provider": "gemini",
-      "model_requested": "gemini-3.5-flash",
-      "model_served": null,
-      "prompt_tokens": null,
-      "completion_tokens": null,
-      "thought_tokens": null,
-      "cost_usd": 0.0,
-      "latency_s": null,
-      "status": "failed",
-      "note": "custom.google-ai-studio: transport failure (HTTPError: HTTP Error 429: Too Many Requests)"
+      "note": "custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.6-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}"
     }
   ],
   "ledger_totals": {
-    "calls": 3,
+    "calls": 2,
     "calls_ok": 0,
     "prompt_tokens": 0,
     "completion_tokens": 0,
@@ -151,9 +103,8 @@
   },
   "limitations": [
     "Groq returned HTTP 429 on the first live call of this proof session (baseline, run 01) and, per the project's hard-stop policy, was not called again; all seats in this run are Gemini models. Cross-provider debate was therefore NOT exercised in this proof — only cross-model debate on one provider.",
-    "Baseline: gemini:gemini-3.8-flash failed (custom.google-ai-studio: transport failure (TimeoutError: The read operation timed out)); trying the fallback seat",
-    "Debater A: gemini:gemini-3.8-flash failed (custom.google-ai-studio: transport failure (HTTPError: HTTP Error 503: Service Unavailable)); trying the fallback seat",
-    "Debater B: gemini:gemini-3.5-flash failed (custom.google-ai-studio: transport failure (HTTPError: HTTP Error 429: Too Many Requests)); trying the fallback seat"
+    "Baseline: gemini:gemini-3.8-flash failed (custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.8-flash is currently experiencing high demand, spikes in); trying the fallback seat",
+    "Baseline: primary seat gemini:gemini-3.8-flash unusable; fell back to gemini:gemini-3.6-flash"
   ],
   "providers_stopped": []
 }

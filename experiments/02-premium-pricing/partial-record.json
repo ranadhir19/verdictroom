@@ -1,0 +1,104 @@
+{
+  "tool": "verdictroom",
+  "status": "aborted",
+  "reason": "provider failure: custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.6-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}",
+  "transcript": [
+    {
+      "seq": 1,
+      "kind": "brief",
+      "payload": {
+        "brief": {
+          "constraints": [
+            "Billing only through the app stores (no direct card billing at launch)",
+            "No sales or support team; everything must be self-serve",
+            "The free tier must remain genuinely useful — it is the growth engine",
+            "Server costs scale with sync and storage usage, so heavy users cost real money"
+          ],
+          "id": "premium-pricing",
+          "options": [
+            {
+              "id": "A",
+              "label": "Flat $5/month (or $50/year)",
+              "summary": "One premium tier, everything included, monthly or annual billing."
+            },
+            {
+              "id": "B",
+              "label": "$3/month base plus paid add-on packs",
+              "summary": "Cheap entry tier; power features (extra storage, automation, exports) sold as add-on packs."
+            },
+            {
+              "id": "C",
+              "label": "Annual-only at $40/year",
+              "summary": "No monthly option; one annual plan, everything included."
+            }
+          ],
+          "question": "A free consumer notes-and-lists app with about 120,000 monthly users is launching a premium tier. Should it price flat, price cheap with add-ons, or go annual-only?",
+          "stakes": "Pricing set at launch is sticky: early subscribers anchor expectations, and migrating a large base between pricing structures later is painful and churn-heavy."
+        },
+        "context_docs": [
+          {
+            "id": "D1",
+            "file": "market-and-platform.md",
+            "chars": 823,
+            "sha256": "e4c9a64e76793d35e5d04d73ed6be31d5b81eed6f49eae23cd82bc34149bcc8d"
+          },
+          {
+            "id": "D2",
+            "file": "usage-and-costs.md",
+            "chars": 868,
+            "sha256": "ecb8e82da6dd684858bee98e8a652cd9385d0097a22b45014945bab1e99ed7fb"
+          }
+        ]
+      },
+      "prev": "verdictroom-genesis",
+      "hash": "57653c9e5ac4c6f7acf8ad9f25a6298ffbc2c0e9a0f8b8848ace1bff7d3f11be"
+    }
+  ],
+  "chain_head": "57653c9e5ac4c6f7acf8ad9f25a6298ffbc2c0e9a0f8b8848ace1bff7d3f11be",
+  "ledger": [
+    {
+      "seq": 1,
+      "phase": "baseline",
+      "role": "Baseline",
+      "provider": "gemini",
+      "model_requested": "gemini-3.8-flash",
+      "model_served": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "thought_tokens": null,
+      "cost_usd": 0.0,
+      "latency_s": null,
+      "status": "failed",
+      "note": "custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}"
+    },
+    {
+      "seq": 2,
+      "phase": "baseline",
+      "role": "Baseline",
+      "provider": "gemini",
+      "model_requested": "gemini-3.6-flash",
+      "model_served": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "thought_tokens": null,
+      "cost_usd": 0.0,
+      "latency_s": null,
+      "status": "failed",
+      "note": "custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.6-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.\",\"code\":\"service_unavailable\"}}"
+    }
+  ],
+  "ledger_totals": {
+    "calls": 2,
+    "calls_ok": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0
+  },
+  "limitations": [
+    "Groq returned HTTP 429 on the first live call of this proof session (baseline, run 01) and, per the project's hard-stop policy, was not called again; all seats in this run are Gemini models. Cross-provider debate was therefore NOT exercised in this proof — only cross-model debate on one provider.",
+    "Baseline: gemini:gemini-3.8-flash failed (custom.google-ai-studio: HTTP 503 {\"error\":{\"message\":\"gemini-3.8-flash is currently experiencing high demand, spikes in); trying the fallback seat",
+    "Baseline: primary seat gemini:gemini-3.8-flash unusable; fell back to gemini:gemini-3.6-flash"
+  ],
+  "providers_stopped": []
+}

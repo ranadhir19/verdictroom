@@ -103,3 +103,41 @@ judge's stated reliance matches the cross-examination transcript,
 and the token ledger. If a re-run shows the debate merely ratifying
 the baseline on all three samples, that is the finding, and it will
 be reported as such.
+
+## Continuation attempt — 2026-11-11 (still no live debate)
+
+The three commands above were re-run the next day. **Headline
+unchanged: no live debate completed.** The blocker changed shape,
+and the difference is recorded rather than smoothed over:
+
+- **Groq was never called.** Earlier in the same work session, a
+  sibling project's bench run (gold-at-five) drew **HTTP 429** from
+  Groq on its first call; under the standing hard-stop rule Groq
+  stayed stopped for the session. `run_proof.py` is Gemini-only by
+  construction in any case, so this changed nothing about the cast.
+- **Sample 01, attempted twice.** Attempt 1: the baseline's primary
+  seat hit a read timeout; its fallback seat (`gemini-3.6-flash`)
+  returned **HTTP 503** ("currently experiencing high demand") and
+  the run aborted at the baseline call. Attempt 2, after a pause:
+  both baseline seats returned HTTP 503. Aborted at baseline.
+- **Sample 02, attempted once** after a further pause: both
+  baseline seats returned HTTP 503. Aborted at baseline.
+- **Sample 03 was not attempted — a decision, recorded as such.**
+  It uses the identical cast and the identical baseline seats, and
+  by then Gemini had failed on every live call of the session
+  across two projects (eight HTTP 503s across the 3.5, 3.6 and 3.8
+  flash aliases, plus one read timeout). Running it would have
+  produced the same baseline abort; it stays first in the queue
+  for the next session instead.
+- The aborted runs wrote their partial records as designed
+  (`01-plugin-architecture/partial-record.json`,
+  `02-premium-pricing/partial-record.json` — each now holds the
+  2026-11-11 attempt, superseding the 2026-11-10 one).
+
+So 2026-11-10 was stopped by quota (429) and 2026-11-11 by
+sustained provider unavailability (503 on every seat). Neither day
+produced a single completed debate call sequence past the baseline.
+Costs so far remain $0.00. The claim this file makes is still only
+the offline one: the protocol is verified end to end against a
+scripted provider; the live question — whether a debate changes
+anything — remains unmeasured.
