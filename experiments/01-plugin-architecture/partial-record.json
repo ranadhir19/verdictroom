@@ -1,0 +1,159 @@
+{
+  "tool": "verdictroom",
+  "status": "aborted",
+  "reason": "no debater produced a usable opening",
+  "transcript": [
+    {
+      "seq": 1,
+      "kind": "brief",
+      "payload": {
+        "brief": {
+          "constraints": [
+            "Two maintainers with roughly six hours a week each",
+            "No breaking changes to the existing config format for at least a year",
+            "The tool must keep working fully offline",
+            "Any public API, once shipped, is effectively permanent"
+          ],
+          "id": "plugin-architecture",
+          "options": [
+            {
+              "id": "A",
+              "label": "Public plugin architecture now",
+              "summary": "Design and ship a stable plugin API (entry points, versioned hooks) in the next release."
+            },
+            {
+              "id": "B",
+              "label": "Stay monolithic, revisit later",
+              "summary": "Keep the single-package design; add features in core as requested; revisit plugins after the next major version."
+            },
+            {
+              "id": "C",
+              "label": "Internal seams now, public API later",
+              "summary": "Refactor core into internal modules with clean boundaries this cycle, but publish no plugin API until usage patterns settle."
+            }
+          ],
+          "question": "Should the loglens open-source CLI adopt a public plugin architecture now, keep its monolith and add extension points later, or build internal module seams now with a public plugin API later?",
+          "stakes": "The choice shapes the next two years of the project: contributor growth and user workarounds on one side, maintainer load and API stability on the other."
+        },
+        "context_docs": [
+          {
+            "id": "D1",
+            "file": "maintainer-capacity.md",
+            "chars": 921,
+            "sha256": "adedc364a9fce9009554e3b0e4cd25bde55464755f3643a43872a050fe23c5cc"
+          },
+          {
+            "id": "D2",
+            "file": "project-notes.md",
+            "chars": 805,
+            "sha256": "25bfd97ff48f690547c659551ff1598d92a8a2c06a4c0049ab79983a7a15bb06"
+          },
+          {
+            "id": "D3",
+            "file": "user-requests.md",
+            "chars": 835,
+            "sha256": "f8ed2c5ac251ba988a8392827db3d33798cf31359466f56c22782657b4b32454"
+          }
+        ]
+      },
+      "prev": "verdictroom-genesis",
+      "hash": "ec4e36591a106a48a2221bc633da8c0ae209a0b8aa9c900b77d4d1a71c311eac"
+    },
+    {
+      "seq": 2,
+      "kind": "unavailable",
+      "payload": {
+        "role": "Baseline",
+        "phase": "baseline",
+        "reason": "no provider for this role is usable"
+      },
+      "prev": "ec4e36591a106a48a2221bc633da8c0ae209a0b8aa9c900b77d4d1a71c311eac",
+      "hash": "b35a3ab3adea4c4b3aec110bc2e05f51c7a10b55b908533694a17d6fa3d8ad34"
+    },
+    {
+      "seq": 3,
+      "kind": "unavailable",
+      "payload": {
+        "role": "Debater A",
+        "phase": "opening",
+        "reason": "no provider for this role is usable"
+      },
+      "prev": "b35a3ab3adea4c4b3aec110bc2e05f51c7a10b55b908533694a17d6fa3d8ad34",
+      "hash": "d8533b8c24948a2a811fc59ff968316b3b2ce768507d20f28b70e8e50b20bb69"
+    },
+    {
+      "seq": 4,
+      "kind": "unavailable",
+      "payload": {
+        "role": "Debater B",
+        "phase": "opening",
+        "reason": "no provider for this role is usable"
+      },
+      "prev": "d8533b8c24948a2a811fc59ff968316b3b2ce768507d20f28b70e8e50b20bb69",
+      "hash": "f1d8eb85cd66ed1bba427455db488f6d61480d6a1cc904da95f9db75b1157953"
+    }
+  ],
+  "chain_head": "f1d8eb85cd66ed1bba427455db488f6d61480d6a1cc904da95f9db75b1157953",
+  "ledger": [
+    {
+      "seq": 1,
+      "phase": "baseline",
+      "role": "Baseline",
+      "provider": "gemini",
+      "model_requested": "gemini-3.8-flash",
+      "model_served": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "thought_tokens": null,
+      "cost_usd": 0.0,
+      "latency_s": null,
+      "status": "failed",
+      "note": "custom.google-ai-studio: transport failure (TimeoutError: The read operation timed out)"
+    },
+    {
+      "seq": 2,
+      "phase": "opening",
+      "role": "Debater A",
+      "provider": "gemini",
+      "model_requested": "gemini-3.8-flash",
+      "model_served": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "thought_tokens": null,
+      "cost_usd": 0.0,
+      "latency_s": null,
+      "status": "failed",
+      "note": "custom.google-ai-studio: transport failure (HTTPError: HTTP Error 503: Service Unavailable)"
+    },
+    {
+      "seq": 3,
+      "phase": "opening",
+      "role": "Debater B",
+      "provider": "gemini",
+      "model_requested": "gemini-3.5-flash",
+      "model_served": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "thought_tokens": null,
+      "cost_usd": 0.0,
+      "latency_s": null,
+      "status": "failed",
+      "note": "custom.google-ai-studio: transport failure (HTTPError: HTTP Error 429: Too Many Requests)"
+    }
+  ],
+  "ledger_totals": {
+    "calls": 3,
+    "calls_ok": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0
+  },
+  "limitations": [
+    "Groq returned HTTP 429 on the first live call of this proof session (baseline, run 01) and, per the project's hard-stop policy, was not called again; all seats in this run are Gemini models. Cross-provider debate was therefore NOT exercised in this proof — only cross-model debate on one provider.",
+    "Baseline: gemini:gemini-3.8-flash failed (custom.google-ai-studio: transport failure (TimeoutError: The read operation timed out)); trying the fallback seat",
+    "Debater A: gemini:gemini-3.8-flash failed (custom.google-ai-studio: transport failure (HTTPError: HTTP Error 503: Service Unavailable)); trying the fallback seat",
+    "Debater B: gemini:gemini-3.5-flash failed (custom.google-ai-studio: transport failure (HTTPError: HTTP Error 429: Too Many Requests)); trying the fallback seat"
+  ],
+  "providers_stopped": []
+}
