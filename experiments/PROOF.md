@@ -125,8 +125,9 @@ and the difference is recorded rather than smoothed over:
 - **Sample 03 was not attempted — a decision, recorded as such.**
   It uses the identical cast and the identical baseline seats, and
   by then Gemini had failed on every live call of the session
-  across two projects (eight HTTP 503s across the 3.5, 3.6 and 3.8
-  flash aliases, plus one read timeout). Running it would have
+  across two projects (seven HTTP 503s across the 3.5, 3.6 and 3.8
+  flash aliases, plus one read timeout — eight calls, none
+  answered). Running it would have
   produced the same baseline abort; it stays first in the queue
   for the next session instead.
 - The aborted runs wrote their partial records as designed
